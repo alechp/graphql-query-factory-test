@@ -71,8 +71,8 @@ graphql-anywhere@^3.0.1:
   resolved "https://registry.yarnpkg.com/graphql-anywhere/-/graphql-anywhere-3.1.0.tgz#3ea0d8e8646b5cee68035016a9a7557c15c21e96"
 
 graphql-query-factory@^1.0.15:
-  version "1.0.17"
-  resolved "https://registry.yarnpkg.com/graphql-query-factory/-/graphql-query-factory-1.0.17.tgz#fdab443a47b2293985b01c9452c318fc36944003"
+  version "1.0.19"
+  resolved "https://registry.yarnpkg.com/graphql-query-factory/-/graphql-query-factory-1.0.19.tgz#e98975b32dd0c423b42f18219f6397b0d2ccba12"
   dependencies:
     apollo-client "^1.9.2"
     dotenv "^4.0.0"

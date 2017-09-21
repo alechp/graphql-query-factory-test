@@ -1,16 +1,16 @@
-const {
-  QueryBuilder,
-  builder,
-  QueryBatcher,
-  batcher
-} = require("../graphql-query-factory/dist/index.js");
-
 // const {
 //   QueryBuilder,
 //   builder,
 //   QueryBatcher,
 //   batcher
-// } = require("graphql-query-factory");
+// } = require("../graphql-query-factory/dist/index.js");
+
+const {
+  QueryBuilder,
+  builder,
+  QueryBatcher,
+  batcher
+} = require("graphql-query-factory");
 
 const chalk = require("chalk");
 const log = console.log;
@@ -45,12 +45,10 @@ function manMutationBuild() {
   qbuilder.setQuery(mutationTemplate);
   qbuilder.setVariables(mutationVariables);
   let queries = qbuilder.buildQueries();
-  log(`queries: ${queries}`);
   return queries;
 }
 function autoMutationBuild() {
   let queries = builder(mutationTemplate, mutationVariables);
-  log(`Queries: ${queries}`);
   return queries;
 }
 
