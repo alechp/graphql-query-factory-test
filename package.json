@@ -4,10 +4,27 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "build": "babel src --out-dir dist"
   },
   "dependencies": {
     "chalk": "^2.1.0",
     "graphql-query-factory": "^1.0.15"
+  },
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ]
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.0"
   }
 }

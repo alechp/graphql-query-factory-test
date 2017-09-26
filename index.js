@@ -5,42 +5,52 @@ let library = {
   local: "../graphql-query-factory/dist/index.js",
   remote: "graphql-query-factory"
 };
-log(`local: ${library.local}`);
+log(
+  `${chalk.blue(
+    "Environment: " +
+      library.local +
+      "\n---------------------------------------------------\n"
+  )}`
+);
 const {
   builder,
   batcher,
   factory
 } = require("../graphql-query-factory/dist/index.js");
 
-log(
-  `\n------------------------------\n
-    ${chalk.green("Builder")}
-  \n------------------------------\n}`
-);
+// `\n------------------------------\n
+//   ${chalk.green("Builder")}
+// \n------------------------------\n}`
 let queries = builder(mock.template, mock.variables);
-log(queries);
+log(`builder(mock.template, mock.variables): ${queries}`);
 ////////////////////////////////////////////////////////
-log(
-  `\n------------------------------\n
-    ${chalk.green("Batcher (single)")}
-  \n------------------------------\n}`
-);
-let responseSolo = batcher.request(mock.singleQuery);
-log(responseSolo);
+// `\n------------------------------\n
+//   ${chalk.green("Batcher (single)")}
+// \n------------------------------\n}`
+batcher
+  .request(mock.singleQuery)
+  .then(data => log(`batcher.request(mock.singleQuery): ${(data, null, 4)}`))
+  .catch(err => log(`batcher.request(mock.singleQuery): ${err}`));
+
 ////////////////////////////////////////////////////////
-log(
-  `\n------------------------------\n
-    ${chalk.green("Batcher (multiple)")}
-  \n------------------------------\n}`
-);
+// `\n------------------------------\n
+//   ${chalk.green("Batcher (multiple)")}
+// \n------------------------------\n}`
+//
+batcher
+  .batch(mock.batchQuery)
+  .then(data =>
+    log(`batcher.batch(mock.batchQuery): ${JSON.stringify(data, null, 4)}`)
+  )
+  .catch(err => log(`batcher.batch(mock.batchQuery): ${err}`));
 
-let responseMultiple = batcher.batch(mock.batchQuery);
-log(responseMultiple);
-
-log(
-  `\n------------------------------\n
-    ${chalk.green("Factory")}
-  \n------------------------------\n}`
-);
-let responseFactory = factory(mock.template, mock.variables);
-log(responseFactory);
+// `\n------------------------------\n
+//   ${chalk.green("Factory")}
+// \n------------------------------\n}`
+factory(mock.template, mock.variables)
+  .then(data =>
+    log(
+      `factory(mock.template, mock.variables): ${JSON.stringify(data, null, 4)}`
+    )
+  )
+  .catch(err => log(`factory(mock.template, mock.variables): ${err}`));
