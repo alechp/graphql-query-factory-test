@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "chalk": "^2.1.0",
-    "graphql-query-factory": "^1.0.15"
+    "graphql-query-factory": "^1.0.23"
   },
   "babel": {
     "presets": [

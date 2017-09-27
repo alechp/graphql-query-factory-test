@@ -12,11 +12,7 @@ log(
       "\n---------------------------------------------------\n"
   )}`
 );
-const {
-  builder,
-  batcher,
-  factory
-} = require("../graphql-query-factory/dist/index.js");
+const { builder, batcher, factory } = require(library.remote);
 
 // `\n------------------------------\n
 //   ${chalk.green("Builder")}
@@ -29,7 +25,9 @@ log(`builder(mock.template, mock.variables): ${queries}`);
 // \n------------------------------\n}`
 batcher
   .request(mock.singleQuery)
-  .then(data => log(`batcher.request(mock.singleQuery): ${(data, null, 4)}`))
+  .then(data =>
+    log(`batcher.request(mock.singleQuery): ${JSON.stringify(data, null, 4)}`)
+  )
   .catch(err => log(`batcher.request(mock.singleQuery): ${err}`));
 
 ////////////////////////////////////////////////////////
